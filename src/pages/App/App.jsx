@@ -9,22 +9,22 @@ import NavBar from "../../components/NavBar/NavBar";
 import { movies } from "../../data.js";
 
 function App() {
-  const [user, setUSer] = useState({});
+  const [user, setUser] = useState({});
 
   return (
     <main className="App">
       <h1>Movies</h1>
       {user ? (
         <>
-        <NavBar />
+        <NavBar user={user} />
         <Routes>
-        <Route path="/" element={<MoviesListPage />} />
-        <Route path="/Movie/:movieName" element={<MovieDetailPage />} />
-        <Route path="/actors" element={<ActorListPage />} />
+        <Route path="/" element={<MoviesListPage movies={movies} />} />
+        <Route path="/Movie/:movieName" element={<MovieDetailPage movies={movies} />} />
+        <Route path="/actors" element={<ActorListPage movies={movies} />} />
         </Routes>
         </>
       ) : (
-        <LoginPage />
+        <LoginPage setUser ={setUser} />
       )}
     </main>
   );

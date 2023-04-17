@@ -1,11 +1,19 @@
-import React from 'react';
+import React, { component } from 'react';
+import MovieCard from '../../components/NavBar/MovieCard/MovieCard';
 
-function MoviesListPage() {
+
+
+function MoviesListPage(props) {
   return (
-    <div>
-        <h1>MoviesListPage</h1>
+    <div className ="container">
+        {
+            props.movies.map(movie => {
+                return <MovieCard key={movie.title} movie={movie} />
+            })
+        }
     </div>
   )
 }
+
 
 export default MoviesListPage;
